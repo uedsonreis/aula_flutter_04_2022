@@ -18,9 +18,6 @@ class _LoginPageState extends State<LoginPage> {
   String _password = '';
 
   void signIn() async {
-    print('E-mail: $_email');
-    print('Password: $_password');
-
     String api = 'https://social-network-for-class.herokuapp.com/auth/login';
 
     Response response = await post(
@@ -35,7 +32,9 @@ class _LoginPageState extends State<LoginPage> {
         MaterialPageRoute(builder: (context) => const HomePage()),
       );
     } else {
-      // Alert: E-mail / senha inválido(a).
+      showDialog(context: context, builder: (context) =>
+        const AlertDialog(title: Text('Login ou senha inválido(a)!')),
+      );
     }
   }
 
@@ -49,7 +48,6 @@ class _LoginPageState extends State<LoginPage> {
       body: Center(
 
         child: Column(
-
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
