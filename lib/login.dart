@@ -33,7 +33,17 @@ class _LoginPageState extends State<LoginPage> {
       );
     } else {
       showDialog(context: context, builder: (context) =>
-        const AlertDialog(title: Text('Login ou senha inválido(a)!')),
+        AlertDialog(
+          title: const Text('Login ou senha inválido(a)!'),
+          actions: [
+            TextButton(
+              child: const Text('Ok'),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       );
     }
   }
